@@ -71,15 +71,16 @@ print("RAG chain assembled.")
 print("\n---Chat with your PDF---")
 print("type 'bye' to quit")
 
-while True:
-    question= input("\n Your Question: ")
-    if question.lower()=='bye':
-        break
-    try:
-        response= rag_chain.invoke({"input": question})
-        print("\n Answer: ", response["answer"])
-    
-    except Exception as e:
-        print(f"An error occurred: {e}")
+if __name__=="__main__":
+    while True:
+        question= input("\n Your Question: ")
+        if question.lower()=='bye':
+            break
+        
+        try:
+            response= rag_chain.invoke({"input": question})
+            print("\n Answer: ", response["answer"])
+        except Exception as e:
+            print(f"An error occurred: {e}")
 
-print("Exiting chat...Goodbye!")
+    print("Exiting chat...Goodbye!")
